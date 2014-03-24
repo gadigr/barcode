@@ -30,7 +30,7 @@ function gotSources(sourceInfos) {
 
   video.addEventListener('click', snapshot, false);
 
-  MediaStreamTrack.getSources(gotSources);
+  //MediaStreamTrack.getSources(gotSources);
 
   var constraints = {video: {
     mandatory: {
