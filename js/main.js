@@ -14,10 +14,8 @@ navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia 
 function gotSources(sourceInfos) {
   for (var i = 0; i != sourceInfos.length; ++i) {
     var sourceInfo = sourceInfos[i];
-    
    if (sourceInfo.kind === 'video') {
-      
-      alert(sourceInfo.label);
+      alert(sourceInfo.id);
     } 
   }
 }
