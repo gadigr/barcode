@@ -8,6 +8,7 @@ var video = document.querySelector("video");
 
   function snapshot() {
     if (localMediaStream) {
+      alert("a");
       ctx.drawImage(video, 0, 0);
       // "image/webp" works in Chrome.
       // Other browsers will fall back to image/png.
