@@ -22,9 +22,8 @@ var UPC_SET = {
 	var i = 0;
 
 video.addEventListener('loadeddata', function() {
-	alert('a');
     video.currentTime = i;
-	setInterval(loopCapture,1000);
+	setInterval(loopCapture,500);
 }, false);
 
  function loopCapture(){
@@ -51,10 +50,10 @@ function gotSources(sourceInfos) {
     if (localMediaStream) {
 	var sourceX = 150;
         var sourceY = 0;
-        var sourceWidth = 320;
-        var sourceHeight = 240;
-        var destWidth = sourceWidth;
-        var destHeight = sourceHeight;
+        var sourceWidth = 640;
+        var sourceHeight = 480;
+        var destWidth = 150;
+        var destHeight = 300;
         var destX = 0;
         var destY = 0;
 		
