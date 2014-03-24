@@ -12,6 +12,7 @@ navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia 
       // "image/webp" works in Chrome.
       // Other browsers will fall back to image/png.
       document.querySelector('img').src = canvas.toDataURL('image/webp');
+      alert(getBarcodeFromImage(canvas.toDataURL('image/webp')));
     }
   }
 
@@ -52,7 +53,6 @@ function errorCallback(error){
     };
     
     getBarcodeFromImage = function(imgOrId){
-      alert("sdsd");
         var doc = document,
             img = "object" == typeof imgOrId ? imgOrId : doc.getElementById(imgOrId),
             canvas = doc.createElement("canvas"),
