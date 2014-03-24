@@ -49,7 +49,7 @@ function gotSources(sourceInfos) {
 
   function snapshot() {
     if (localMediaStream) {
-      ctx.drawImage(video, 0, 0, 320, 240);
+      ctx.drawImage(video, 100, 100, 320, 240);
       // "image/webp" works in Chrome.
       // Other browsers will fall back to image/png.
       document.querySelector('img').src = canvas.toDataURL('image/webp');
