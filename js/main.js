@@ -32,4 +32,9 @@ function errorCallback(error){
   console.log("navigator.getUserMedia error: ", error);
 }
 
-navigator.getUserMedia(constraints, successCallback, errorCallback);
+//navigator.getUserMedia(constraints, successCallback, errorCallback);
+// Not showing vendor prefixes or code that works cross-browser.
+  navigator.getUserMedia({video: true}, function(stream) {
+    video.src = window.URL.createObjectURL(stream);
+    localMediaStream = stream;
+  }, errorCallback);
