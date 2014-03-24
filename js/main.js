@@ -52,8 +52,8 @@ function gotSources(sourceInfos) {
         var sourceY = 0;
         var sourceWidth = 640;
         var sourceHeight = 480;
-        var destWidth = 150;
-        var destHeight = 300;
+        var destWidth = 300;
+        var destHeight = 150;
         var destX = 0;
         var destY = 0;
 		
