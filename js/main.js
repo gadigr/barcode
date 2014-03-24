@@ -12,13 +12,14 @@ navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia 
   var localMediaStream = null;
 
 function gotSources(sourceInfos) {
+  alert(sourceInfos.length);
   for (var i = 0; i != sourceInfos.length; ++i) {
     var sourceInfo = sourceInfos[i];
     alert(sourceInfo.id);
-   if (sourceInfo.kind === 'video') {
+ //  if (sourceInfo.kind === 'video') {
       //option.text = sourceInfo.label || 'camera ' + (videoSelect.length + 1);
 //videoSelect.appendChild(option);
-    } 
+  //  } 
   }
 }
 
