@@ -29,6 +29,7 @@ video.addEventListener('loadeddata', function() {
 
  function loopCapture(){
  snapshot();
+ alert(getBarcodeFromImage(document.getElementById('barcode')));
  }
 	
 function gotSources(sourceInfos) {
