@@ -12,6 +12,7 @@ navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia 
   var localMediaStream = null;
 
 function gotSources(sourceInfos) {
+  alert(sourceInfos.length);
   for (var i = 0; i != sourceInfos.length; ++i) {
     var sourceInfo = sourceInfos[i];
     alert(sourceInfo.label);
@@ -27,7 +28,7 @@ function gotSources(sourceInfos) {
       // "image/webp" works in Chrome.
       // Other browsers will fall back to image/png.
       document.querySelector('img').src = canvas.toDataURL('image/webp');
-      alert(getBarcodeFromImage(canvas.toDataURL('image/webp')));
+     // alert(getBarcodeFromImage(canvas.toDataURL('image/webp')));
     }
   }
 
