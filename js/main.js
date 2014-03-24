@@ -33,8 +33,8 @@ navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia 
 //  video.play();
 //}
 
-//function errorCallback(error){
-//  console.log("navigator.getUserMedia error: ", error);
-//}
+function errorCallback(error){
+  console.log("navigator.getUserMedia error: ", error);
+}
 
 //navigator.getUserMedia(constraints, successCallback, errorCallback);
