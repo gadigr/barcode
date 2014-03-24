@@ -1,6 +1,11 @@
 navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
 
-  var constraints = {audio: false, video: true};
+  var constraints = {video: {
+    mandatory: {
+      maxWidth: 320,
+      maxHeight: 240
+    }
+  }};
   var video = document.querySelector('video');
   var canvas = document.querySelector('canvas');
   var ctx = canvas.getContext('2d');
@@ -19,7 +24,7 @@ navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia 
   video.addEventListener('click', snapshot, false);
 
   // Not showing vendor prefixes or code that works cross-browser.
-  navigator.getUserMedia({video: true}, function(stream) {
+  navigator.getUserMedia(constraints, function(stream) {
     video.src = window.URL.createObjectURL(stream);
     localMediaStream = stream;
   }, errorCallback);
