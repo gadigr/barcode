@@ -1,23 +1,18 @@
 navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
 
-  var constraints = {video: {
-    mandatory: {
-      maxWidth: 320,
-      maxHeight: 240
-    }
-  }};
+
   var video = document.querySelector('video');
   var canvas = document.querySelector('canvas');
   var ctx = canvas.getContext('2d');
   var localMediaStream = null;
+  var videoSource = null;
 
 function gotSources(sourceInfos) {
   alert(sourceInfos.length);
   for (var i = 0; i != sourceInfos.length; ++i) {
     var sourceInfo = sourceInfos[i];
-    alert(sourceInfo.label);
    if (sourceInfo.kind === 'video') {
-      
+      videoSource = sourceInfo.id;
     } 
   }
 }
@@ -35,6 +30,14 @@ function gotSources(sourceInfos) {
   video.addEventListener('click', snapshot, false);
 
   MediaStreamTrack.getSources(gotSources);
+
+  var constraints = {video: {
+    mandatory: {
+      maxWidth: 320,
+      maxHeight: 240
+    }
+    optional: [{sourceId: videoSource}]
+  }};
 
   // Not showing vendor prefixes or code that works cross-browser.
   navigator.getUserMedia(constraints, function(stream) {
