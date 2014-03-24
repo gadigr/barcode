@@ -54,8 +54,8 @@ function gotSources(sourceInfos) {
         var sourceHeight = 80;
         var destWidth = sourceWidth;
         var destHeight = sourceHeight;
-        var destX = 240;
-        var destY = 200;
+        var destX = 0;
+        var destY = 0;
 		
       ctx.drawImage(video, sourceX, sourceY, sourceWidth, sourceHeight, destX, destY, destWidth, destHeight);
       // "image/webp" works in Chrome.
