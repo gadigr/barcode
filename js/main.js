@@ -49,14 +49,14 @@ function gotSources(sourceInfos) {
 
   function snapshot() {
     if (localMediaStream) {
-		var sourceX = 150;
+	var sourceX = 150;
         var sourceY = 0;
         var sourceWidth = 320;
         var sourceHeight = 240;
         var destWidth = sourceWidth;
         var destHeight = sourceHeight;
-        var destX = canvas.width / 2 - destWidth / 2;
-        var destY = canvas.height / 2 - destHeight / 2;
+        var destX = 0;
+        var destY = 0;
 		
       ctx.drawImage(video, sourceX, sourceY, sourceWidth, sourceHeight, destX, destY, destWidth, destHeight);
       // "image/webp" works in Chrome.
