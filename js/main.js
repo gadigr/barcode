@@ -24,20 +24,12 @@ var UPC_SET = {
 video.addEventListener('loadeddata', function() {
 	alert('a');
     video.currentTime = i;
-
+	setInterval(loopCapture,2000);
 }, false);
 
-  video.addEventListener('seeked', function() {
-
-    // now video has seeked and current frames will show
-    // at the time as we expect
-    alert('b' + i);
-
-    // when frame is captured, increase
-    i += 5;
-	video.currentTime = i;
-
-}, false);
+ function loopCapture(){
+ alert('b');
+ }
 	
 function gotSources(sourceInfos) {
   alert(sourceInfos.length);
