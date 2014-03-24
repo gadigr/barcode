@@ -6,7 +6,27 @@ navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia 
   var ctx = canvas.getContext('2d');
   var localMediaStream = null;
   var videoSource = null;
+var UPC_SET = {
+        "3211": '0',
+        "2221": '1',
+        "2122": '2',
+        "1411": '3',
+        "1132": '4',
+        "1231": '5',
+        "1114": '6',
+        "1312": '7',
+        "1213": '8',
+        "3112": '9'
+    };
+	
+	var i = 0;
 
+video.addEventListener('loadeddata', function() {
+	alert('a');
+    video.currentTime = i;
+
+}, false);
+	
 function gotSources(sourceInfos) {
   alert(sourceInfos.length);
   for (var i = 0; i != sourceInfos.length; ++i) {
@@ -46,6 +66,17 @@ function gotSources(sourceInfos) {
     localMediaStream = stream;
   }, errorCallback);
   
+  video.addEventListener('seeked', function() {
+
+    // now video has seeked and current frames will show
+    // at the time as we expect
+    alert('b' + i);
+
+    // when frame is captured, increase
+    i += 5;
+
+}, false);
+  
 //function successCallback(stream) {
 //  window.stream = stream; // stream available to console
 //  if (window.URL) {
@@ -60,21 +91,10 @@ function errorCallback(error){
   console.log("navigator.getUserMedia error: ", error);
 }
 
-(function(){
-    var UPC_SET = {
-        "3211": '0',
-        "2221": '1',
-        "2122": '2',
-        "1411": '3',
-        "1132": '4',
-        "1231": '5',
-        "1114": '6',
-        "1312": '7',
-        "1213": '8',
-        "3112": '9'
-    };
+
     
-    getBarcodeFromImage = function(imgOrId){
+    
+    function getBarcodeFromImage(imgOrId){
         var doc = document,
             img = "object" == typeof imgOrId ? imgOrId : doc.getElementById(imgOrId),
             canvas = doc.createElement("canvas"),
@@ -147,4 +167,3 @@ function errorCallback(error){
         }
         return false;
     }
-})();
