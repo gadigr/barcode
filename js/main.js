@@ -31,6 +31,7 @@ video.addEventListener('loadeddata', function() {
  var result = getBarcodeFromImage(document.getElementById('barcode'));
  if(result != false)
 	 {
+	 	if(result.indexOf("X") == -1)
 		alert(result);
 	 }
  }
