@@ -24,11 +24,11 @@ var UPC_SET = {
 video.addEventListener('loadeddata', function() {
 	alert('a');
     video.currentTime = i;
-	setInterval(loopCapture,2000);
+	setInterval(loopCapture,1000);
 }, false);
 
  function loopCapture(){
- alert('b');
+ snapshot();
  }
 	
 function gotSources(sourceInfos) {
