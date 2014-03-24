@@ -48,7 +48,7 @@ function gotSources(sourceInfos) {
 
   function snapshot() {
     if (localMediaStream) {
-	var sourceX = 150;
+	var sourceX = 100;
         var sourceY = 0;
         var sourceWidth = 640;
         var sourceHeight = 480;
