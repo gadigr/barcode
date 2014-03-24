@@ -2,6 +2,20 @@ navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia 
 
 var constraints = {audio: false, video: true};
 var video = document.querySelector("video");
+  var canvas = document.querySelector('canvas');
+  var ctx = canvas.getContext('2d');
+  var localMediaStream = null;
+
+  function snapshot() {
+    if (localMediaStream) {
+      ctx.drawImage(video, 0, 0);
+      // "image/webp" works in Chrome.
+      // Other browsers will fall back to image/png.
+      document.querySelector('img').src = canvas.toDataURL('image/webp');
+    }
+  }
+  
+  video.addEventListener('click', snapshot, false);
 
 function successCallback(stream) {
   window.stream = stream; // stream available to console
