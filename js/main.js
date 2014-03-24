@@ -32,7 +32,9 @@ video.addEventListener('loadeddata', function() {
  if(result != false)
 	 {
 	 	if(result.indexOf("X") == -1)
+	 	{
 		alert(result);
+	 	}
 	 }
  }
 	
