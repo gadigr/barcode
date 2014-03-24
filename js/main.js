@@ -48,10 +48,10 @@ function gotSources(sourceInfos) {
 
   function snapshot() {
     if (localMediaStream) {
-	var sourceX = 240 /2;
-        var sourceY = 200 /2;
-        var sourceWidth = 160 /2;
-        var sourceHeight = 80 /2;
+	var sourceX = 240 ;
+        var sourceY = 200 ;
+        var sourceWidth = 160 ;
+        var sourceHeight = 80 ;
         var destWidth = sourceWidth;
         var destHeight = sourceHeight;
         var destX = 0;
@@ -71,8 +71,8 @@ function gotSources(sourceInfos) {
 
   var constraints = {video: {
     mandatory: {
-      maxWidth: 320,
-      maxHeight: 240
+      maxWidth: 640,
+      maxHeight: 480
     },
     optional: [{sourceId: videoSource}]
   }};
