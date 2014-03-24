@@ -16,7 +16,7 @@ function gotSources(sourceInfos) {
     var sourceInfo = sourceInfos[i];
     
    if (sourceInfo.kind === 'video') {
-      option.text = sourceInfo.label || 'camera ' + (videoSelect.length + 1);
+      
       alert(sourceInfo.label);
     } 
   }
