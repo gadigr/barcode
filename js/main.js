@@ -26,6 +26,18 @@ video.addEventListener('loadeddata', function() {
     video.currentTime = i;
 
 }, false);
+
+  video.addEventListener('seeked', function() {
+
+    // now video has seeked and current frames will show
+    // at the time as we expect
+    alert('b' + i);
+
+    // when frame is captured, increase
+    i += 5;
+	video.currentTime = i;
+
+}, false);
 	
 function gotSources(sourceInfos) {
   alert(sourceInfos.length);
@@ -66,17 +78,7 @@ function gotSources(sourceInfos) {
     localMediaStream = stream;
   }, errorCallback);
   
-  video.addEventListener('seeked', function() {
 
-    // now video has seeked and current frames will show
-    // at the time as we expect
-    alert('b' + i);
-
-    // when frame is captured, increase
-    i += 5;
-	video.currentTime = i;
-
-}, false);
   
 //function successCallback(stream) {
 //  window.stream = stream; // stream available to console
