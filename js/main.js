@@ -74,6 +74,7 @@ function gotSources(sourceInfos) {
 
     // when frame is captured, increase
     i += 5;
+	video.currentTime = i;
 
 }, false);
   
