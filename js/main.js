@@ -12,6 +12,7 @@ function gotSources(sourceInfos) {
   for (var i = 0; i != sourceInfos.length; ++i) {
     var sourceInfo = sourceInfos[i];
    if (sourceInfo.kind === 'video') {
+     alert(sourceInfo.id);
       videoSource = sourceInfo.id;
     } 
   }
@@ -35,7 +36,7 @@ function gotSources(sourceInfos) {
     mandatory: {
       maxWidth: 320,
       maxHeight: 240
-    }
+    },
     optional: [{sourceId: videoSource}]
   }};
 
