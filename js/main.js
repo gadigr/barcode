@@ -25,7 +25,7 @@ navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia 
 	
 	
 function gotSources(sourceInfos) {
-	alert(sourceInfos.length);
+	
   for (var i = 0; i != sourceInfos.length; ++i) {
     var sourceInfo = sourceInfos[i];
     var option = document.createElement("option");
@@ -33,7 +33,7 @@ function gotSources(sourceInfos) {
     if (sourceInfo.kind === 'video') {
       option.text = sourceInfo.label || 'camera ' + (videoSelect.length + 1);
       videoSelect.appendChild(option);
-      alert(option.text);
+      
     } else {
       console.log('Some other kind of source: ', sourceInfo);
     }
@@ -48,6 +48,7 @@ video.addEventListener('loadeddata', function() {
 
  function loopCapture(){
  snapshot();
+ 
  var result = getBarcodeFromImage(document.getElementById('barcode'));
  if(result != false)
 	 {
@@ -85,7 +86,7 @@ video.addEventListener('loadeddata', function() {
   // Not showing vendor prefixes or code that works cross-browser.
 function successCallback(stream) {
   window.stream = stream; // make stream available to console
-  alert('paly');
+  
   video.src = window.URL.createObjectURL(stream);
   video.play();
 }
@@ -100,7 +101,7 @@ function start(){
     window.stream.stop();
   }
   var videoSource = videoSelect.value;
-  alert(videoSource);
+  
     var constraints = {video: {
     mandatory: {
       maxWidth: 640,
