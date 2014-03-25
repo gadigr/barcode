@@ -85,6 +85,7 @@ video.addEventListener('loadeddata', function() {
   // Not showing vendor prefixes or code that works cross-browser.
 function successCallback(stream) {
   window.stream = stream; // make stream available to console
+  alert('paly');
   video.src = window.URL.createObjectURL(stream);
   video.play();
 }
@@ -99,6 +100,7 @@ function start(){
     window.stream.stop();
   }
   var videoSource = videoSelect.value;
+  alert(videoSource);
     var constraints = {video: {
     mandatory: {
       maxWidth: 640,
@@ -110,7 +112,6 @@ function start(){
   navigator.getUserMedia(constraints, successCallback, errorCallback);
 }
 
-audioSelect.onchange = start;
 videoSelect.onchange = start;
 
 start();
@@ -124,12 +125,6 @@ start();
 //  }
 //  video.play();
 //}
-
-function errorCallback(error){
-  console.log("navigator.getUserMedia error: ", error);
-}
-
-
     
     
     function getBarcodeFromImage(imgOrId){
