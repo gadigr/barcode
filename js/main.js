@@ -47,6 +47,7 @@ video.addEventListener('loadeddata', function() {
 }, false);
 
  function loopCapture(){
+	 
  snapshot();
  
  var result = getBarcodeFromImage(document.getElementById('barcode'));
@@ -60,10 +61,10 @@ video.addEventListener('loadeddata', function() {
 
   function snapshot() {
     if (window.stream) {
-	var sourceX = 240 ;
-        var sourceY = 200 ;
-        var sourceWidth = 160 ;
-        var sourceHeight = 80 ;
+	var sourceX = 0 ;
+        var sourceY = 0 ;
+        var sourceWidth = 320 ;
+        var sourceHeight = 240 ;
         var destWidth = sourceWidth;
         var destHeight = sourceHeight;
         var destX = 0;
@@ -104,8 +105,8 @@ function start(){
   
     var constraints = {video: {
     mandatory: {
-      maxWidth: 640,
-      maxHeight: 480
+      maxWidth: 1280,
+      maxHeight: 720
     },
     optional: [{sourceId: videoSource}]
   }};
