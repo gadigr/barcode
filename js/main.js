@@ -2,11 +2,13 @@ navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia 
 
 
   var video = document.querySelector('video');
+  var videoSelect = document.querySelector("select#videoSource");
   var canvas = document.querySelector('canvas');
+  var i = 0;
   var ctx = canvas.getContext('2d');
   var localMediaStream = null;
   var videoSource = null;
-var UPC_SET = {
+  var UPC_SET = {
         "3211": '0',
         "2221": '1',
         "2122": '2',
@@ -19,7 +21,23 @@ var UPC_SET = {
         "3112": '9'
     };
 	
-	var i = 0;
+	
+	
+	
+function gotSources(sourceInfos) {
+  for (var i = 0; i != sourceInfos.length; ++i) {
+    var sourceInfo = sourceInfos[i];
+    var option = document.createElement("option");
+    option.value = sourceInfo.id;
+    if (sourceInfo.kind === 'video') {
+      option.text = sourceInfo.label || 'camera ' + (videoSelect.length + 1);
+      videoSelect.appendChild(option);
+    } else {
+      console.log('Some other kind of source: ', sourceInfo);
+    }
+  }
+}
+
 
 video.addEventListener('loadeddata', function() {
     video.currentTime = i;
@@ -36,17 +54,6 @@ video.addEventListener('loadeddata', function() {
 	 	
 	 }
  }
-	
-function gotSources(sourceInfos) {
-  alert(sourceInfos.length);
-  for (var i = 0; i != sourceInfos.length; ++i) {
-    var sourceInfo = sourceInfos[i];
-   if (sourceInfo.kind === 'video') {
-     alert(sourceInfo.id);
-      videoSource = sourceInfo.id;
-    } 
-  }
-}
 
   function snapshot() {
     if (localMediaStream) {
@@ -71,22 +78,41 @@ function gotSources(sourceInfos) {
 
   //MediaStreamTrack.getSources(gotSources);
 
-  var constraints = {video: {
+
+
+  // Not showing vendor prefixes or code that works cross-browser.
+function successCallback(stream) {
+  window.stream = stream; // make stream available to console
+  video.src = window.URL.createObjectURL(stream);
+  video.play();
+}
+
+function errorCallback(error){
+  console.log("navigator.getUserMedia error: ", error);
+}
+
+function start(){
+  if (!!window.stream) {
+    video.src = null;
+    window.stream.stop();
+  }
+  var videoSource = videoSelect.value;
+    var constraints = {video: {
     mandatory: {
       maxWidth: 640,
       maxHeight: 480
     },
     optional: [{sourceId: videoSource}]
   }};
-
-  // Not showing vendor prefixes or code that works cross-browser.
-  navigator.getUserMedia(constraints, function(stream) {
-    video.src = window.URL.createObjectURL(stream);
-    localMediaStream = stream;
-  }, errorCallback);
   
+  navigator.getUserMedia(constraints, successCallback, errorCallback);
+}
 
-  
+audioSelect.onchange = start;
+videoSelect.onchange = start;
+
+start();
+
 //function successCallback(stream) {
 //  window.stream = stream; // stream available to console
 //  if (window.URL) {
