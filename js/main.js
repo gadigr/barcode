@@ -25,6 +25,7 @@ navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia 
 	
 	
 function gotSources(sourceInfos) {
+	alert(sourceInfos.length);
   for (var i = 0; i != sourceInfos.length; ++i) {
     var sourceInfo = sourceInfos[i];
     var option = document.createElement("option");
@@ -32,6 +33,7 @@ function gotSources(sourceInfos) {
     if (sourceInfo.kind === 'video') {
       option.text = sourceInfo.label || 'camera ' + (videoSelect.length + 1);
       videoSelect.appendChild(option);
+      alert(option.text);
     } else {
       console.log('Some other kind of source: ', sourceInfo);
     }
@@ -76,7 +78,7 @@ video.addEventListener('loadeddata', function() {
 
   video.addEventListener('click', snapshot, false);
 
-  //MediaStreamTrack.getSources(gotSources);
+  MediaStreamTrack.getSources(gotSources);
 
 
 
