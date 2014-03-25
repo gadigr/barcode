@@ -59,7 +59,7 @@ video.addEventListener('loadeddata', function() {
  }
 
   function snapshot() {
-    if (localMediaStream) {
+    if (window.stream) {
 	var sourceX = 240 ;
         var sourceY = 200 ;
         var sourceWidth = 160 ;
